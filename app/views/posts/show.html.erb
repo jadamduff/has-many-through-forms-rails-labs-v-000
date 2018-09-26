@@ -22,6 +22,6 @@
 <% end %>
 
 <h2>Users who commented:</h2>
-<% @post.users.each do |user| %>
+<% @post.users.unique.each do |user| %>
   <%= link_to user.username, user_path(user) %><br />
 <% end %>
