@@ -2,12 +2,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @comment.content = params[:content]
-    @comment.post_id = params[:post_id]
-    if params[:comment][:user_id] != ''
-      @comment.user_id = params[:user_id]
-    elsif !params[:user_attributes][:username].empty?
-      @comment.user_id = User.create(username: params[:user_attributes][:username]).id
+    @comment.content = comment_params[:content]
+    @comment.post_id = comment_params[:post_id]
+    if comment_params[:user_id] != ''
+      @comment.user_id = comment_params[:user_id]
+    elsif !comment_params[:user_attributes][:username].empty?
+      @comment.user_id = User.create(username: comment_params[:user_attributes][:username]).id
     end
     @comment.save
     binding.pry
