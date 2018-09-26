@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.content = params[:content]
     @comment.post_id = params[:post_id]
-    if params[:user_id]
+    if params[:comment][:user_id] != ''
       @comment.user_id = params[:user_id]
     elsif !params[:user_attributes][:username].empty?
       @comment.user_id = User.create(username: params[:user_attributes][:username]).id
