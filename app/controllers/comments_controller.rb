@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
     if params[:user_id]
       @comment.user_id = params[:user_id]
-    else
+    elsif params[:user_attributes][:username]
       @comment.user_id = User.create(username: params[:user_attributes][:username]).id
     end
     @comment.save
