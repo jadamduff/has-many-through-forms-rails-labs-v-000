@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
       @comment.user_id = User.create(username: params[:user_attributes][:username]).id
     end
     @comment.save
+    binding.pry
     redirect_to post_path(@comment.post)
   end
 
